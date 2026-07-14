@@ -1,0 +1,48 @@
+{
+  "gstin": "33AAFCV1090B1ZT",
+  "rtnprd": "042026",
+  "data": {
+    "docdata": {
+      "b2b": [
+        {
+          "ctin": "33AAKCP6920F1ZH",
+          "trdnm": "Supplier Alpha",
+          "supprd": "042026",
+          "inv": [
+            { "inum": "V9-B2B-A", "idt": "05-04-2026", "val": 11800, "itms": [ { "itm": { "txval": 10000, "iamt": 0, "camt": 900, "samt": 900, "csamt": 0 } } ] }
+          ]
+        }
+      ],
+      "b2ba": [
+        {
+          "ctin": "33AAKCP6920F1ZH",
+          "trdnm": "Supplier Alpha",
+          "supprd": "042026",
+          "inv": [
+            { "inum": "V9-B2BA-1", "idt": "06-04-2026", "val": 5900, "oinum": "V9-B2B-A", "oidt": "05-04-2026", "itms": [ { "itm": { "txval": 5000, "iamt": 0, "camt": 450, "samt": 450, "csamt": 0 } } ] }
+          ]
+        }
+      ],
+      "cdnr": [
+        {
+          "ctin": "33AAKCP6920F1ZH",
+          "trdnm": "Supplier Alpha",
+          "supprd": "042026",
+          "nt": [
+            { "ntnum": "V9-CDNR-1", "ntdt": "10-04-2026", "nttyp": "C", "val": 2360, "itms": [ { "itm": { "txval": 2000, "iamt": 0, "camt": 180, "samt": 180, "csamt": 0 } } ] }
+          ]
+        }
+      ],
+      "cdnra": [
+        {
+          "ctin": "33AAKCP6920F1ZH",
+          "trdnm": "Supplier Alpha",
+          "supprd": "042026",
+          "nt": [
+            { "ntnum": "V9-CDNRA-1", "ntdt": "11-04-2026", "nttyp": "C", "val": 1180, "ontnum": "V9-CDNR-1", "ontdt": "10-04-2026", "itms": [ { "itm": { "txval": 1000, "iamt": 0, "camt": 90, "samt": 90, "csamt": 0 } } ] }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+/* CSS to hide the file name and style the button */
+.CSVReader-input {
+    display: none; /* Hide the input element that displays the file name */
+  }
+  
+  .CSVReader {
+    position: relative; /* Set a relative position to the container */
+  }
+  
+  .CSVReader-label {
+    display: inline-block;
+    background-color: #007bff; /* Set your desired background color */
+    color: #fff; /* Set your desired text color */
+    padding: 8px 16px; /* Adjust padding as needed */
+    border: none; /* Remove the border */
+    border-radius: 4px; /* Add border radius for rounded corners */
+    cursor: pointer; /* Add a pointer cursor */
+  }
+  
+  .CSVReader-label:hover {
+    background-color: #0056b3; /* Change the background color on hover */
+  }
+  

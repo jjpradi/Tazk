@@ -1,0 +1,54 @@
+FINDING: 2026-04-13-mdn-igst-stale-subashini (P2)
+IGST toggle stale closure in updateItem
+Tester: qa.subashini  |  Date: 2026-04-13
+Source: src/pages/sales/manualNotes/ManualDebitNote/useManualDebitNote.js
+
+--- showIGST STATE (line 61) ---
+
+  const [showIGST, setShowIGST] = useState(false);
+
+--- updateItem CALLBACK (lines 74–113) — STALE CLOSURE ---
+
+  const updateItem = useCallback((index, field, value) => {
+    setItems(prev => prev.map((item, i) => {
+      if (i !== index) return item;
+      const updated = { ...item, [field]: value };
+
+      if (['amount', 'gst', 'gst_id'].includes(field)) {
+        const amt = parseFloat(updated.amount) || 0;
+        const gstRate = updated.gst && updated.gst_id
+          ? parseFloat(updated.gst_id) : 0;
+
+        if (updated.gst && gstRate > 0) {
+          if (showIGST) {                           ← STALE — always false after mount
+            updated.gst_amount = round2((amt * gstRate) / 100);
+          } else {
+            const halfTax = round2((amt * (gstRate / 2)) / 100);
+            updated.gst_amount = round2(halfTax + halfTax);
+          }
+        }
+        // …
+      }
+      return updated;
+    }));
+  }, []);              ← EMPTY DEPS — showIGST never in deps array
+
+--- CORRECT FIX ---
+
+  }, [showIGST]);      ← add showIGST to dependency array
+
+--- IMPACT ---
+
+  When user toggles IGST on and then edits an amount:
+    Actual:   gst_amount = CGST+SGST split calculation (showIGST = false branch)
+    Expected: gst_amount = IGST calculation (showIGST = true branch)
+
+  Grand total is the same numerically, but the tax-head attribution in the
+  submitted payload's manualNotes[] is wrong — affects accounting ledger
+  entries (IGST vs CGST+SGST debit postings).
+
+--- CONTRAST: addRow (line 64–66) correctly lists showIGST ---
+
+  const addRow = useCallback(() => {
+    setItems(prev => [...prev, emptyItem()]);
+  }, [showIGST]);      ← showIGST IS in deps here — updateItem was missed

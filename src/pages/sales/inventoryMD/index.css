@@ -1,0 +1,25 @@
+ 
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 50px;
+   padding: 10px;
+  }
+
+  .h4{
+background-color: aqua;
+}
+/* .grid-containe {
+    display: grid;
+    grid-template-columns: 80px 200px auto 40px;
+  } */
+
+  .apexcharts-data-labels {
+    fill: #ff0000; /* Change the color here */
+  }
+  /* Custom CSS */
+.rotated-labels {
+  transform: rotate(-45deg); /* Adjust the rotation angle as needed */
+  transform-origin: center bottom;
+  white-space: nowrap;
+}

@@ -1,0 +1,55 @@
+FINDING: 2026-04-13-manual-debit-note-subashini (P1)
+Location dropdown ghost-selects first option
+Tester: qa.subashini  |  Date: 2026-04-13
+Source: src/pages/sales/manualNotes/ManualDebitNote/index.js
+
+--- STATE INITIALISATION (line 45) ---
+
+  const [locationId, setLocationId] = useState(isAllLocation ? '' : headerLocationId);
+
+  isAllLocation is true when headerLocationId is falsy, "null", or "0" (line 38):
+    const isAllLocation = !headerLocationId || headerLocationId === 'null' || headerLocationId === '0';
+
+  → When the global header is "All Locations", locationId initialises to ''.
+
+--- LOCATION DROPDOWN RENDER (lines 232–239) ---
+
+  <TextField
+    select fullWidth size="small" variant="filled" label="Location *"
+    value={locationId}                         ← '' on open
+    onChange={(e) => setLocationId(e.target.value)}
+    SelectProps={{ native: true }}>
+    {filteredLocations.map(loc => (
+      <option key={loc.location_id} value={loc.location_id}>
+        {loc.location_name}
+      </option>
+    ))}
+  </TextField>
+
+  → No <option value=""> placeholder exists.
+  → Browser auto-highlights the first real option visually.
+  → React state (locationId) stays '' — onChange never fires for the
+    browser's implicit first-option display.
+
+--- VALIDATION (line 138) ---
+
+  if (!locationId) {
+    setSnack({ open: true, msg: 'Please select a Location', severity: 'warning' });
+    return;
+  }
+
+  → Because locationId === '', this branch fires and blocks submission
+    even though the user sees a location name in the dropdown.
+
+--- EXPECTED FIX ---
+
+Option A — add placeholder as first child:
+  <option value="">Select location…</option>
+  {filteredLocations.map(...)}
+
+Option B — auto-select on locations load:
+  useEffect(() => {
+    if (!locationId && filteredLocations.length > 0) {
+      setLocationId(String(filteredLocations[0].location_id));
+    }
+  }, [filteredLocations]);

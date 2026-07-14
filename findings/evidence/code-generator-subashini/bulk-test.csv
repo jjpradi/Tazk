@@ -1,0 +1,8 @@
+mode,code_type,code_format,prefix,pad_length,code_value,display_name,description,mrp,offer_price,brand,batch,expiry,emp_id,designation,department,asset_tag,owner,warranty_until
+auto,product,qrcode,PRD,6,,Bulk Apple A,bulk row 1,150,120,Tropicana,B-2026-04-B1,2027-05-30,,,,,,
+auto,product,qrcode,PRD,6,,Bulk Apple B,bulk row 2,160,130,Tropicana,B-2026-04-B2,2027-06-30,,,,,,
+manual,product,qrcode,,,PRD000001,Dup Apple,duplicate of existing,200,180,XYZ,B-DUP,,,,,,,
+manual,asset,qrcode,,,AST-LAP-007,Dell Latitude,asset row,,,,,,,Sample Engineer,IT,AST-LAP-007,Subashini,12/2027
+random,employee,qrcode,EMP,,,Jane Tester,random emp,,,,,,EMP-9999,QA Lead,QA,,,
+auto,unknownType,qrcode,UNK,6,,Bad type,should fail,,,,,,,,,,,
+manual,product,qrcode,,,,Missing code value,manual without code_value,,,,,,,,,,,

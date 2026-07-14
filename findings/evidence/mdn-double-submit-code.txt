@@ -1,0 +1,74 @@
+FINDING: 2026-04-13-mdn-double-submit-subashini (P2)
+No double-submit guard on Confirm button
+Tester: qa.subashini  |  Date: 2026-04-13
+Source: src/pages/sales/manualNotes/ManualDebitNote/index.js
+
+--- CONFIRM DIALOG BUTTON (lines 308–320) — NO GUARD ---
+
+  <Dialog open={confirmOpen} onClose={() => setConfirmOpen(false)}>
+    <DialogTitle>Confirm Debit Note</DialogTitle>
+    <DialogContent>
+      <DialogContentText>
+        Create debit note for ₹{grandTotal.toFixed(2)}? This will create
+        accounting entries.
+      </DialogContentText>
+    </DialogContent>
+    <DialogActions>
+      <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
+      <Button variant="contained" onClick={handleSubmit}>
+        Confirm                    ← no disabled prop, no ref guard
+      </Button>
+    </DialogActions>
+  </Dialog>
+
+--- handleSubmit (lines 145–182) ---
+
+  const handleSubmit = async () => {
+    setConfirmOpen(false);   ← async state update, dialog still open for ~1 frame
+    setSubmitting(true);     ← async state update, submitting still false for ~1 frame
+    // …
+    const res = await ManualNotesService.create(payload);  ← network call
+  };
+
+  Problem: between the first click and React's next render, a second click
+  can pass through because:
+    - confirmOpen is still true in the DOM
+    - submitting is still false in the closure
+
+--- OUTER BUTTON IS GUARDED (line 289–293) — but dialog button is NOT ---
+
+  <Button
+    variant="contained"
+    onClick={handleSubmitClick}
+    disabled={submitting || submitted || !isValid}>   ← this button IS guarded
+    Create Debit Note
+  </Button>
+
+--- CONTRAST: purchase-return.md test plan states ---
+
+  "Double-click 'Confirm Return' → Exactly one DN created (guarded by submittingRef)"
+  Manual Debit Note was not updated with the same pattern.
+
+--- RECOMMENDED FIX ---
+
+  // Add near line 59:
+  const submittingRef = useRef(false);
+
+  // Update handleSubmit (line 145):
+  const handleSubmit = async () => {
+    if (submittingRef.current) return;   // prevents re-entry
+    submittingRef.current = true;
+    setConfirmOpen(false);
+    setSubmitting(true);
+    try {
+      // … existing logic …
+    } finally {
+      submittingRef.current = false;
+      setSubmitting(false);
+    }
+  };
+
+  // Update Confirm button (line 318):
+  <Button variant="contained" onClick={handleSubmit} disabled={submitting}>
+    Confirm
+  </Button>

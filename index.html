@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      let dynamicimg = 'fav icon.svg'
+                         // window.location.hostname === 'erp.tazk.in' ? 'Logo-monogram.svg' : 'SP1.png'
+
+      var link = document.querySelector("link[rel~='icon']");if (!link) {
+          link = document.createElement('link');
+          link.rel = 'icon';
+          document.head.appendChild(link);
+      }
+    link.href = dynamicimg;
+
+    let dynamictitle =  'Tazk - The ERP Solution'
+    // window.location.hostname === 'localhost' ? 'SalesPlay - ERP Solution' :
+    //                       window.location.hostname === 'erp.salesplay.in' ? 'SalesPlay - ERP Solution' :
+    //                       window.location.hostname === 'erp.tazk.in' ? 'Tazk - The ERP Solution' : 'The ERP Solution'
+      document.title = dynamictitle;
+
+      let sharelogo =  'fav icon.svg.png'
+      //window.location.hostname === 'erp.tazk.in' ? 'Logo-monogram.png' : 'SP1.png'
+
+                      var metalink = document.querySelector("link[rel~='apple-touch-icon']");if (!metalink) {
+                        metalink = document.createElement('link');
+                        metalink.rel = 'apple-touch-icon';
+                          document.head.appendChild(metalink);
+                      }
+                      metalink.href = sharelogo;
+    </script>
+    <!-- <link rel="icon" href="" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="An integrated software solution to grow your business."
+    />
+    <!-- <link rel="apple-touch-icon" href="/Logo-monogram.svg" /> -->
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link
+    rel="stylesheet"
+    href="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.css"
+  />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+
+    <!--
+      Notice the use of  in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+
+    <!-- <title>SalesPlay - ERP Solution</title> -->
+
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+       <script>
+        const initAutoLogin = () => {
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    const username = urlParams.get('username');
+    const password = urlParams.get('password');
+
+    if (username && password) {
+      // Store in sessionStorage for immediate access
+      sessionStorage.setItem('auto_login_username', decodeURIComponent(username));
+      sessionStorage.setItem('auto_login_password', decodeURIComponent(password));
+      sessionStorage.setItem('auto_login_pending', 'true');
+
+      console.log('Auto-login parameters detected and stored:', { username, password: '***' });
+    }
+  } catch (error) {
+    console.error('Failed to initialize auto-login:', error);
+  }
+};
+
+// Call immediately when script loads
+initAutoLogin();
+
+// Also call when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAutoLogin);
+} else {
+  initAutoLogin();
+}
+    </script>
+    <script type="module" src="/src/index.js"></script>
+  </body>
+</html>

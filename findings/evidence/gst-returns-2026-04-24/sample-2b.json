@@ -1,0 +1,21 @@
+{
+  "gstin": "33AAFCV1090B1ZT",
+  "rtnprd": "032026",
+  "data": {
+    "docdata": {
+      "b2b": [
+        {
+          "ctin": "33AAKCP6920F1ZH",
+          "trdnm": "Supplier Alpha Test",
+          "supprd": "032026",
+          "inv": [
+            { "inum": "INV-A001-e2e", "idt": "15-03-2026", "val": 11800, "itms": [
+                { "itm": { "txval": 10000, "iamt": 0, "camt": 900, "samt": 900, "csamt": 0 } } ] },
+            { "inum": "INV-C999-e2e", "idt": "22-03-2026", "val": 5900, "itms": [
+                { "itm": { "txval": 5000, "iamt": 0, "camt": 450, "samt": 450, "csamt": 0 } } ] }
+          ]
+        }
+      ]
+    }
+  }
+}

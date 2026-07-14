@@ -1,0 +1,75 @@
+import React, {useState} from 'react';
+import {IconButton} from '@mui/material';
+import PropTypes from 'prop-types';
+import AppTooltip from '../AppTooltip';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import Drawer from '@mui/material/Drawer';
+import AppMessageContent from './AppMessageContent';
+import Box from '@mui/material/Box';
+import Cookies from 'universal-cookie';
+
+const AppMessages = ({
+  isMenu,
+  sxMessageContentStyle,
+  drawerPosition = 'right',
+  tooltipPosition = 'bottom',
+}) => {
+  const [showMessage, setShowMessage] = useState(false);
+  const cookies = new Cookies();
+
+  return (
+    <>
+      { isMenu ? (
+        <Box component='span' onClick={() => setShowMessage(true)}>
+          Message
+        </Box>
+      ) : (cookies
+        .get('login')
+        ?.modules.some((m) => m.module_name === 'User Message') &&(
+        <AppTooltip title='Message' placement={tooltipPosition}>
+          <IconButton
+            className='icon-btn'
+            sx={(theme) => ({
+              borderRadius: '50%',
+              width: 40,
+              height: 40,
+              color: theme.palette.text.secondary,
+              backgroundColor: theme.palette.background.default,
+              border: 1,
+              borderColor: 'transparent',
+              '&:hover, &:focus': {
+                color: theme.palette.text.primary,
+                backgroundColor: theme.alpha(theme.palette.background.default, 0.9),
+                borderColor: theme.alpha(theme.palette.text.secondary, 0.25),
+              },
+            })}
+            onClick={() => setShowMessage(true)}
+            size='large'
+          >
+            <EmailOutlinedIcon className='icon' />
+          </IconButton>
+        </AppTooltip>
+          ))}
+
+      <Drawer
+        anchor={drawerPosition}
+        open={showMessage}
+        onClose={() => setShowMessage(false)}
+      >
+        <AppMessageContent
+          sxStyle={sxMessageContentStyle}
+          onClose={() => setShowMessage(false)}
+        />
+      </Drawer>
+    </>
+  );
+};
+
+export default AppMessages;
+
+AppMessages.propTypes = {
+  sxMessageContentStyle: PropTypes.object,
+  drawerPosition: PropTypes.string,
+  tooltipPosition: PropTypes.string,
+  isMenu: PropTypes.bool,
+};

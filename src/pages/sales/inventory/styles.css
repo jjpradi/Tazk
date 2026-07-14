@@ -1,0 +1,68 @@
+/* .p {
+    margin: 0;
+  }
+  .invoice {
+    padding-left: 3px;
+    height: 40px;
+    border-bottom: 1px solid black;
+  }
+  .invoice_1 {
+    padding-left: 3px;
+    height: 100px;
+  }
+  .hr_1 {
+    margin: 5px 20px 0 0;
+    border-bottom: 1px solid black;
+  }
+  .small {
+    font-size: 0.7rem;
+    line-height: 1.6;
+  }
+  .b_left {
+    border-left: 1px solid black;
+  }
+  .b_right {
+    border-right: 1px solid black;
+  }
+  .b_top {
+    border-top: 1px solid black;
+  }
+  .b_bottom {
+    border-bottom: 1px solid black;
+  }
+  .mlr {
+    margin: 0 3px 0 3px;
+  }
+  .plr {
+    padding: 0 3px 0 3px;
+  }
+  .t_left {
+    text-align: left;
+  }
+  .t_right {
+    text-align: right;
+  }
+  .t_center {
+    text-align: center;
+  }
+   */
+
+   /* .tab_screen2 {
+      overflow-x: hidden;
+      display: flex;
+      justify-content: flex-start !important; 
+      margin-right: auto;
+    } */
+
+    @media only screen and (min-width: 768px) {
+      .tab_screen2 {
+        max-width: 95% !important; /* Adjust for better fit */
+        width: auto !important;
+        margin-right:  auto !important; /* Centers the modal */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        
+      }
+    }

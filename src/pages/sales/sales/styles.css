@@ -1,0 +1,134 @@
+.p {
+    margin: 0;
+    font-size: 0.85rem;
+    font-family:  Poppins, sans-serif;
+  }
+  .waybill{
+    margin: 0;
+    font-size: 0.75rem;
+  }
+  .invoice {
+    padding-left: 3px;
+    height: max-content;
+    border-bottom: 1px solid black;
+  }
+  .invoice_1 {
+    padding-left: 3px;
+    height: 100px;
+  }
+  .hr_1 {
+    margin: 5px 0 0 0;
+    border-bottom: 1px solid black;
+  }
+  .small {
+    font-size: 0.7rem;
+    line-height: 1.6;
+  }
+  .b_left {
+    border-left: 1px solid black;
+  }
+  .b_right {
+    border-right: 1px solid black;
+  }
+  .b_top {
+    border-top: 1px solid black;
+  }
+  .b_bottom {
+    border-bottom: 1px solid black;
+  }
+  .mlr {
+    margin: 0 3px 0 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .plr {
+    padding: 0 3px 0 3px;
+  }
+  .t_left {
+    text-align: left;
+  }
+  .t_right {
+    text-align: right;
+  }
+  .t_center {
+    text-align: center;
+  }
+  .page-break {        
+    border-top: 1px solid black;
+    page-break-before: always;
+    break-before: page;
+    padding: 10px
+  }
+
+  
+  @media only screen and (min-width: 768px) and (max-width: 768px) {
+    .tab_screen {
+      /* overflow: hidden; */
+      width: 100% !important;
+    }
+    .tab_screen2 {
+      overflow-x: hidden;
+      display: flex;
+      justify-content: flex-start !important; 
+      margin-right: auto;
+    }
+    .tab_screen3 {
+      overflow: hidden;
+      width: 85% !important;
+      margin: 0px !important;
+    }
+
+    @media print {
+      .page {
+        page-break-before: always;
+        break-before: page;
+      }
+      .page-break {
+         
+        border-top: 1px solid black;
+        padding: 10px;
+        page-break-before: always;
+        break-before: page;
+      }
+    
+      .print-block {
+        break-inside: avoid;
+      }
+      /* .pagetemp {
+        page-break-after: always;
+        position: relative;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+      } */
+      .page:last-child {
+        page-break-after: auto;
+      }
+      .header, .footer {
+        position: fixed;
+        left: 0;
+        right: 0;
+        background-color: #f3f3f3;
+        display: flex;
+        flex-direction: row;
+        
+      }
+  
+      .header {
+        top: 0;
+      }
+  
+      .footer {
+        bottom: 0;
+      }
+  
+      .content {
+        margin-top: 100px;
+        margin-bottom: 100px;
+        flex: 1;
+        height: 100vh;
+      }
+    }
+  }
+  

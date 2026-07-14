@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+*{
+  font-family:  Poppins, sans-serif;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+*:hover {
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 10px;
+  transition: background 0.3s;
+}
+
+*:hover::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+*:hover::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* WhatsApp templates: avoid double scrollbars by disabling page scroll
+   and letting the page card handle scrolling */
+body.whatsapp-no-page-scroll .app-content-view {
+  overflow: hidden !important;
+}
+
+/* ===== CUSTOM UTILITY CLASSES ===== */
+
+.cardheader{
+  font-size: 13px !important ;
+  font-family: Poppins, sans-serif !important;
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+.cardheadertitle{
+  font-size: 13px !important ;
+  font-family: Poppins, sans-serif !important;
+  color: black !important;
+  font-weight: 600 !important;
+}
+
+.cardheadervalue{
+  font-size: 12px !important ;
+  font-family: Poppins, sans-serif !important;
+  color: rgba(0, 0, 0, 0.7) !important;
+  font-weight: 600 !important;
+}
+
+.loanheader{
+  font-size: 13px !important;
+  font-family: Poppins, sans-serif !important;
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+.loancontent{
+  font-size: 12px !important;
+  font-family: Poppins, sans-serif !important;
+  color: rgba(0, 0, 0, 0.7) !important;
+  font-weight: 600 !important;
+}
+
+.chatcontent{
+  font-size: 13px !important;
+  font-family: Poppins, sans-serif !important;
+  font-weight: 600 !important;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.receiptContent{
+  font-size: 13px !important;
+  font-family: Poppins, sans-serif !important;
+  font-weight: 600 !important;
+  color: darkgray;
+}
+
+.card-content{
+  font-size: 13px !important;
+  font-family: Poppins,sans-serif !important;
+  font-weight: 500 !important;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.dashboard-card-title{
+  font-size: 12px !important;
+  font-family: Poppins,sans-serif !important;
+  font-weight: 600 !important;
+  color: rgba(0, 0, 0, 0.7)!important;
+}
+
+.dashboard-chart-content{
+  font-size: 11px !important;
+  font-family: Poppins,sans-serif !important;
+  font-weight: 400 !important;
+  color: rgba(0, 0, 0, 0.7)!important;
+}
+
+.dashboard-chart-content-new{
+  font-size: 12px !important;
+  font-family: Poppins,sans-serif !important;
+  font-weight: 600 !important;
+  color: rgba(0, 0, 0, 0.7)!important;
+}
+
+.dashboard-tile-header{
+  font-size: 11px !important;
+  font-family: Poppins,sans-serif !important;
+  font-weight: 600 !important;
+  color: rgba(255, 255, 255)!important;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 3.25px;
+}
+
+.dashboard-visibility-icon{
+  padding: 0px;
+  width: 100%;
+  border-radius: 0;
+  margin-top: -5px;
+}
+
+.dashboard-chart-content-white{
+  font-size: 11px !important;
+  font-family: Poppins,sans-serif !important;
+  font-weight: 400 !important;
+  color: rgb(255, 255, 255)!important;
+}
+
+.page-title{
+  font-size: 14px !important;
+  font-family: Poppins,sans-serif !important;
+  font-weight: 600 !important;
+  color: rgba(0, 0, 0, 0.7)!important;
+}
+
+.table-title{
+  font-size: 12px !important;
+  font-family: Poppins,sans-serif !important;
+  font-weight: 600 !important;
+  color: rgba(0, 0, 0, 0.7)!important;
+}
+
+.table-content{
+  font-size: 12px !important;
+  font-family: Poppins,sans-serif !important;
+  font-weight: 400 !important;
+  color: rgba(0, 0, 0, 0.7)!important;
+}
+
+.content{
+  font-size: 12px !important;
+  font-family: Poppins,sans-serif !important;
+  font-weight: 400 !important;
+  color: rgba(0, 0, 0, 0.7)!important;
+}
+
+.chats{
+  font-size: 12px !important;
+  font-family: Poppins,sans-serif !important;
+  font-weight: 400 !important;
+  color: rgba(0, 0, 0, 0.7)!important;
+}
+
+.contactscontent {
+  font-size: 12px !important;
+  font-family: Poppins,sans-serif !important;
+  font-weight: 600 !important;
+  color: rgba(0, 0, 0, 0.7)!important;
+}
+
+.toastContainer {
+  z-index: 9999999 !important;
+}
+
+/* ===== SPECIAL COMPONENT STYLES ===== */
+
+.apexcharts-text tspan {
+  font-size: 11px !important;
+  font-family: Poppins,sans-serif !important;
+  font-weight: 400 !important;
+  color: rgba(0, 0, 0, 0.7)!important;
+}
+
+.logo-delete-icon {
+  position: absolute;
+  z-index: 1;
+  border: solid 2px rgba(10, 143, 220, 0.7);
+  background-color: rgba(10, 143, 220, 0.7);
+  color: #fff;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  left:0;
+  bottom:0;
+}
+
+/* ===== SCROLLBAR VARIANTS ===== */
+
+.sticky-card-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sticky-card-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.sticky-card-content::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+.sticky-card-content::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* ===== TABLE UTILITIES ===== */
+
+.MuiTableRow-root[style*="opacity: 0.2"] {
+  opacity: 1 !important;
+}
+
+li,
+ul {
+  list-style: none !important;
+  padding-left: 5 !important;
+  margin-left: 0 !important;
+}
+
+.table-cell-content {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.noBorder-wrapper .MuiTablePagination-root {
+  border-top: none !important;
+  box-shadow: none !important;
+}
+
+.incentives-table-wrapper .MuiTablePagination-root {
+  border-top: none !important;
+  box-shadow: none !important;
+}
+
+.no-pagination-border .MuiTablePagination-root {
+  border-top: none !important;
+  box-shadow: none !important;
+}
+
+/* ===== EMPTY STATE ===== */
+
+.MuiTableBody-root tr:only-child td:only-child::before {
+  content: '';
+  display: block;
+  background-image: url('assets/icon/nodatasImage.svg');
+  background-repeat: no-repeat;
+  background-position: center 60px;
+  background-size: 120px;
+  height: 200px;
+  opacity: 0.7;
+}
+
+/* ===== DATAGRID FOCUS FIX ===== */
+
+.MuiDataGrid-root {
+  .MuiDataGrid-cell:focus,
+  .MuiDataGrid-cell:focus-within,
+  .MuiDataGrid-columnHeader:focus,
+  .MuiDataGrid-columnHeader:focus-within {
+    outline: none;
+  }
+}
+
+/* ===== NUMBER INPUT SPIN ARROWS ===== */
+
+.noSpinArrows input[type="number"]::-webkit-inner-spin-button,
+.noSpinArrows input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ===== NO-SCROLL TABLE ===== */
+
+.no-scroll-table .MuiTableBody-root {
+  height: 350px !important;
+  overflow: hidden !important;
+}
+
+.no-scroll-table .MuiTableContainer-root {
+  overflow: hidden !important;
+}
+
+.no-scroll-table .MuiPaper-root {
+  overflow: hidden !important;
+}
+
+.active-scroll-bars {
+  overflow-y: hidden;
+  overflow: -moz-scrollbars-vertical;
+}

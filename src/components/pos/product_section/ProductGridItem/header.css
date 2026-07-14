@@ -1,0 +1,14 @@
+.head-text {
+    position: relative;
+ }
+ .text-on-image {
+   position: absolute;
+   font-size: 10px;
+   font-style: italic;
+   font-weight: bold;
+   font-family: 'Courier New', Courier, monospace;
+   /* right: 40%; */
+   /* left: 30%; */
+   bottom: 0%;
+   width: 100%;
+ }

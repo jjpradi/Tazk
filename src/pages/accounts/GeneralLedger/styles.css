@@ -1,0 +1,66 @@
+.p {
+    margin: 0;
+    font-size: 0.85rem;
+  }
+  .invoice {
+    padding-left: 3px;
+    height: max-content;
+    border-bottom: 1px solid black;
+  }
+  .invoice_1 {
+    padding-left: 3px;
+    height: 100px;
+  }
+  .hr_1 {
+    margin: 5px 0 0 0;
+    border-bottom: 1px solid black;
+  }
+  .small {
+    font-size: 0.7rem;
+    line-height: 1.6;
+  }
+  .b_left {
+    border-left: 1px solid black;
+  }
+  .b_right {
+    border-right: 1px solid black;
+  }
+  .b_top {
+    border-top: 1px solid black;
+  }
+  .b_bottom {
+    border-bottom: 1px solid black;
+  }
+  .mlr {
+    margin: 0 3px 0 3px;
+  }
+  .plr {
+    padding: 0 3px 0 3px;
+  }
+  .t_left {
+    text-align: left;
+  }
+  .t_right {
+    text-align: right;
+  }
+  .t_center {
+    text-align: center;
+  }
+
+  @media print {
+    .invoice_wrap {
+      transform: scale(.65);
+    }
+    .invoice_wrap1 {
+      transform: translateY(-18%);
+    
+    }
+    html, body {
+      border: 1px solid white;
+      /* height: 100%; */
+      page-break-after: avoid;
+      page-break-before: avoid;
+      width: 100%;
+      }
+  }
+  

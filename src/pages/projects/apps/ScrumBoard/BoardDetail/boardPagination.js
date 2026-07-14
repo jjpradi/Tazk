@@ -1,0 +1,2 @@
+export const DEFAULT_LANE_PAGE_SIZE = 50;
+export const DEFAULT_REPORT_PAGE_SIZE = 100;

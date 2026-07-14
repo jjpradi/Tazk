@@ -1,0 +1,47 @@
+import React from 'react';
+import ChatItem from './ChatItem';
+import PropTypes from 'prop-types';
+import AppList from '@crema/core/AppList';
+import ListEmptyResult from '@crema/core/AppList/ListEmptyResult';
+import {useIntl} from 'react-intl';
+import ChatListSkeleton from '@crema/core/AppSkeleton/ChatListSkeleton';
+import {useSelector} from 'react-redux';
+
+const ChatList = ({chatListData, loading, user, storage}) => {
+  const {messages} = useIntl();
+  const {
+    chatReducer: {selectedUser},
+  } = useSelector((state) => state);
+  return (
+    <AppList
+      containerStyle={{
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+      data={chatListData}
+      ListEmptyComponent={
+        <ListEmptyResult
+          content={messages['chatApp.noUserFound']}
+          loading={loading}
+          placeholder={<ChatListSkeleton />}
+        />
+      }
+      renderRow={(item) => (
+        <ChatItem
+          key={'chat-item-' + item.inbox_id}
+          item={item}
+          selectedUser={selectedUser}
+          user={user}
+          storage={storage}
+        />
+      )}
+    />
+  );
+};
+
+export default ChatList;
+
+ChatList.propTypes = {
+  chatListData: PropTypes.array.isRequired,
+  loading: PropTypes.bool,
+};

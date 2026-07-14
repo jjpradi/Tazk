@@ -1,0 +1,38 @@
+version: 0.2
+
+env:
+  variables:
+    AWS_DEFAULT_REGION: ap-south-1
+  secrets-manager:
+    MY_SECRET: "arn:aws:secretsmanager:ap-south-1:664122357333:secret:CodeBuildSecret-N2HHld"
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+    commands:
+      - echo "Setting NODE_OPTIONS"
+      - export NODE_OPTIONS="--max_old_space_size=4096"
+      - echo Installing source NPM dependencies...
+      - npm install
+  build:
+    commands:
+      - echo Build started on `date`
+      - npm run build
+      - echo Build completed on `date`
+  post_build:
+    commands:
+      - echo Post-build started on `date`
+      - echo Syncing built files to S3...
+      - aws s3 sync build/ s3://payroll.tazk.in --delete
+      - echo Post-build completed on `date`
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: build
+
+cache:
+  paths:
+    - node_modules/**/*
+
